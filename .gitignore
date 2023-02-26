@@ -76,9 +76,11 @@ docs/_build/
 target/
 terraform/
 *.json
+orbital-concord-378412-2d4515969c70.json
 
 # Jupyter Notebook
 .ipynb_checkpoints
+
 
 # IPython
 profile_default/
