@@ -36,12 +36,13 @@ def write_local(df:pd.DataFrame,color:str,dataset_file:str)-> Path:
 @task()
 def write_gcs(path:Path)->None:
     '''Upload local parquet file do GCS'''
+    
     gcp_cloud_storage_bucket_block = GcsBucket.load("zoom-gcs")
-    gcp_cloud_storage_bucket_block.upload_from_path(from_path=f'{path}',to_path=path)
+    gcp_cloud_storage_bucket_block.upload_from_path(path,path)
     return
 
 @flow()
-def etl_web_togcp()->None:
+def etl_web_to_gcp()->None:
     '''The main ETL'''
     color='yellow'
     month=1
@@ -55,4 +56,4 @@ def etl_web_togcp()->None:
 
 
 if __name__=='__main__':
-    etl_web_togcp()
+    etl_web_to_gcp()
